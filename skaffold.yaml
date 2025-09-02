@@ -1,0 +1,59 @@
+apiVersion: skaffold/v4beta13
+kind: Config
+metadata:
+  name: hatena-intern-2025
+build:
+  artifacts:
+    - image: hatena-intern-2025-account
+      context: services/account
+    - image: hatena-intern-2025-account-test
+      context: services/account
+      docker:
+        dockerfile: Dockerfile.test
+    - image: hatena-intern-2025-blog
+      context: services/blog
+    - image: hatena-intern-2025-blog-test
+      context: services/blog
+      docker:
+        dockerfile: Dockerfile.test
+    - image: hatena-intern-2025-renderer-go
+      context: services/renderer-go
+  local:
+    push: false
+    useBuildkit: true
+manifests:
+  kustomize:
+    paths:
+      - k8s
+deploy:
+  kubectl: {}
+  statusCheckDeadlineSeconds: 180
+  kubeContext: hatena-intern-2025
+portForward:
+  - resourceType: service
+    resourceName: blog
+    port: 8080
+    localPort: 8080
+  - resourceType: service
+    resourceName: blog-db
+    port: 3306
+    localPort: 3306
+  - resourceType: service
+    resourceName: account-db
+    port: 3306
+    localPort: 3307
+  - resourceType: service
+    resourceName: account
+    port: 50051
+    localPort: 50051
+  - resourceType: service
+    resourceName: renderer-go
+    namespace: hatena-intern-2025
+    port: 50051
+    localPort: 50052
+# port-forward設定を追加したい場合、以下に追記
+#  - resourceType: service
+#    resourceName: renderer-ts
+#    namespace: hatena-intern-2025
+#    port: 50051
+#    localPort: 50053

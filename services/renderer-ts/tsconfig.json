@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "typeRoots" : ["./node_modules/@types/", "./src/@types"],
+    "incremental": true,
+    "target": "es2023",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "esModuleInterop": true,
+    "lib": ["es2023"],
+    "strict": true,
+    // https://github.com/dcodeIO/long.js/issues/125
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*",
+    "vitest.config.mts"
+  ]
+}

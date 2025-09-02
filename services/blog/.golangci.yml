@@ -1,0 +1,13 @@
+version: "2"
+
+linters:
+  exclusions:
+    paths:
+      - ".+_gen.go"
+
+formatters:
+  enable:
+    - gofmt
+  settings:
+    gofmt:
+      simplify: true

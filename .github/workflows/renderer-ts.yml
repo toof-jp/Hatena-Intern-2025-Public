@@ -1,0 +1,28 @@
+name: Test renderer-ts
+
+on:
+  push:
+    paths:
+      - .github/workflows/renderer-ts.yml
+      - services/renderer-ts/**
+
+defaults:
+  run:
+    working-directory: ./services/renderer-ts/
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: services/renderer-ts/yarn.lock
+      - run: yarn install --immutable
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn build

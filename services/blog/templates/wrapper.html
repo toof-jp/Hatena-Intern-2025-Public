@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{block "title" .}}{{end}}</title>
+    {{block "head" .}}{{end}}
+  </head>
+  <body>
+    {{block "body" .}}{{end}}
+    {{range .Manifest}}
+      {{if .IsEntry}}
+        <script defer src="/{{ .File }}"></script>
+        {{range .Css}}
+          <link rel="stylesheet" href="/{{ . }}" />
+        {{end}}
+      {{end}}
+    {{end}}
+  </body>
+</html>
