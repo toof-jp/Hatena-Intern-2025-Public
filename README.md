@@ -1,3 +1,9 @@
+はてなインターン2025の前半課題の[id:toof_jp](https://profile.hatena.ne.jp/toof_jp/)の作業内容です
+
+[hatena/Hatena-Intern-2025-Public](https://github.com/hatena/Hatena-Intern-2025-Public)からフォークしたリポジトリに対して自分の作業内容を反映させています
+
+---
+
 # [Hatena SUMMER INTERNSHIP 2025](https://hatenacorp.jp/recruit/intern/2025)
 
 「Hatena SUMMER INTERNSHIP 2025」では、Kubernetes上に構築されたブログシステムを題材としました。ブログシステムはマイクロサービスを意識しており、メインであるブログサービスに加えて、アカウントサービスや、Markdownなどの記法を変換するサービスが用意されています。それぞれのサービス間はgRPCを使ってやりとりしています。
