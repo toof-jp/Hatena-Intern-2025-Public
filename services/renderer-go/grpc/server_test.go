@@ -10,8 +10,23 @@ import (
 
 func Test_Server_Render(t *testing.T) {
 	s := NewServer()
-	src := `foo https://google.com/ bar`
+	src := `# Heading
+
+This is *italic* and **bold**.
+
+- item1
+- item2
+
+[Google](https://google.com/)`
+	want := `<h1>Heading</h1>
+<p>This is <em>italic</em> and <strong>bold</strong>.</p>
+<ul>
+<li>item1</li>
+<li>item2</li>
+</ul>
+<p><a href="https://google.com/">Google</a></p>
+`
 	reply, err := s.Render(context.Background(), &pb.RenderRequest{Src: src})
 	assert.NoError(t, err)
-	assert.Equal(t, `foo <a href="https://google.com/">https://google.com/</a> bar`, reply.Html)
+	assert.Equal(t, want, reply.Html)
 }

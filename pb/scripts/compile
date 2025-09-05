@@ -47,10 +47,11 @@ docker run -v "$(pwd):/pb" -w /pb --rm hatena-intern-2025-protoc-ts \
     --grpc_out=grpc_js:ts/renderer \
     --ts_out=grpc_js:ts/renderer \
     renderer.proto
-mkdir -p ../services/renderer-go/pb ../services/renderer-ts/pb ../services/blog/pb
+mkdir -p ../services/renderer-go/pb ../services/renderer-ts/pb ../services/blog/pb ../services/renderer-rust/pb
 cp -r ./go/renderer ../services/renderer-go/pb
 cp -r ./ts/renderer ../services/renderer-ts/pb
 cp -r ./go/renderer ../services/blog/pb
+cp -r ./renderer.proto ../services/renderer-rust/pb/renderer.proto
 
 ## health-check (参考用)
 mkdir -p ts/health-check

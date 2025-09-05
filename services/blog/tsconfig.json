@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "typeRoots" : ["./node_modules/@types/", "./src/@types"],
-    "incremental": true,
-    "target": "es2023",
-    "module": "node16",
-    "moduleResolution": "node16",
+    "target": "ES2023",
+    "module": "ESNext",
+    "lib": ["DOM", "ES2023"],
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "lib": ["es2023"],
     "strict": true,
-    // https://github.com/dcodeIO/long.js/issues/125
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "incremental": true,
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
-  "include": [
-    "src/**/*",
-    "vite.config.ts"
-  ]
+  "include": ["src/**/*", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", "static"]
 }

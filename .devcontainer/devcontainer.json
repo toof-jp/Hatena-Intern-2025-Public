@@ -6,7 +6,8 @@
         "GitHub.copilot",
         "ms-azuretools.vscode-docker",
         "ms-kubernetes-tools.vscode-kubernetes-tools",
-        "ms-vsliveshare.vsliveshare-pack"
+        "ms-vsliveshare.vsliveshare-pack",
+        "asvetliakov.vscode-neovim"
       ]
     }
   },
@@ -24,15 +25,17 @@
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers-contrib/features/apt-get-packages:1": {
       "packages": "default-mysql-client"
-    }
+    },
+    "ghcr.io/devcontainers/features/rust:1.5.0": {}
   },
   "postStartCommand": "sh .devcontainer/post-start.sh",
   "postAttachCommand": "sh .devcontainer/post-attach.sh",
+  "postCreateCommand": "sudo apt update && sudo apt install -y protobuf-compiler && chmod +x .devcontainer/install-neovim.sh && bash -lc .devcontainer/install-neovim.sh",
   "forwardPorts": [8080, 50051, 50052, 50053],
   "portsAttributes": {
     "8080": {
       "label": "blog",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "notify"
     },
     "50051": {
       "label": "account-grpc",

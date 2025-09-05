@@ -115,6 +115,7 @@ func (s *Server) attachHandlers() {
 	s.e.POST("/my/blogs/:path/entries/:id/unpublish", s.UnpublishEntryHandler(), requireSessionMiddleware())
 	s.e.GET("/blogs/:path", s.BlogHandler())
 	s.e.GET("/blogs/:path/entries/:id", s.EntryHandler())
+	s.e.POST("/preview", s.PreviewHandler())
 }
 
 // 静的ファイルルーティングをまとめた関数

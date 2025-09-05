@@ -18,6 +18,8 @@ build:
         dockerfile: Dockerfile.test
     - image: hatena-intern-2025-renderer-go
       context: services/renderer-go
+    - image: hatena-intern-2025-renderer-rust
+      context: services/renderer-rust
   local:
     push: false
     useBuildkit: true
@@ -51,9 +53,8 @@ portForward:
     namespace: hatena-intern-2025
     port: 50051
     localPort: 50052
-# port-forward設定を追加したい場合、以下に追記
-#  - resourceType: service
-#    resourceName: renderer-ts
-#    namespace: hatena-intern-2025
-#    port: 50051
-#    localPort: 50053
+  - resourceType: service
+    resourceName: renderer-rust
+    namespace: hatena-intern-2025
+    port: 50051
+    localPort: 50053
